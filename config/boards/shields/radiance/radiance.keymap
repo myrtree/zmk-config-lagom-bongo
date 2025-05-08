@@ -11,25 +11,27 @@
         gresc: grave_escape {
             compatible = "zmk,behavior-mod-morph";
             #binding-cells = <0>;
-            bindings = <&kp ESC>, <&kp GRAVE>;
-            mods = <(MOD_LSFT|MOD_RSFT)>;
+            bindings = <&kp ESC>, <&mt MOD_LSFT GRAVE>,  <&kp GRAVE>;
+            mods = <(MOD_LSFT|MOD_RSFT)>, <(MOD_LCTL|MOD_RCTL)>;
         };
         bspc_del: backspace_delete {
             compatible = "zmk,behavior-mod-morph";
             #binding-cells = <0>;
-            bindings = <&kp BACKSPACE>, <&kp DELETE>;
-            mods = <(MOD_LSFT|MOD_RSFT)>;
-            keep-mods = <(MOD_RSFT)>;
+            bindings = <&kp BACKSPACE>, <&mt MOD_LSFT DELETE>, <&kp DELETE>;
+            mods = <(MOD_LSFT|MOD_RSFT)>, <(MOD_LCTL|MOD_RCTL)>;
+            keep-mods = <(MOD_RSFT|MOD_LSFT)>;
         };
         scroll_up_down: behavior_sensor_rotate_mouse_wheel_up_down {
 	        compatible = "zmk,behavior-sensor-rotate";
 	        #sensor-binding-cells = <0>;
             bindings = <&msc SCRL_UP>, <&msc SCRL_DOWN>;
+            steps-per-report = <1>
             tap-ms = <20>;
         };
         scroll_tabs: behavior_sensor_scroll_tabs_left_right {
             compatible = "zmk,behavior-sensor-rotate";
 	        #sensor-binding-cells = <0>;
+            steps-per-report = <1>
             bindings = <&kp LC(PG_DN)>, <&kp LC(PG_UP)>;
         };
     };
